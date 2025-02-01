@@ -17,7 +17,7 @@ class FlightsPage extends Simulation {
 		.acceptLanguageHeader("ru-RU,ru;q=0.9")
 		.userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36")
 
-	val headers_0 = Map(
+	val fp_headers_0 = Map(
 		"Accept" -> "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
 		"Cache-Control" -> "no-cache",
 		"Pragma" -> "no-cache",
@@ -30,7 +30,7 @@ class FlightsPage extends Simulation {
 		"sec-ch-ua-mobile" -> "?0",
 		"sec-ch-ua-platform" -> "Windows")
 
-	val headers_1 = Map(
+	val fp_headers_1 = Map(
 		"Accept" -> "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
 		"Cache-Control" -> "no-cache",
 		"Pragma" -> "no-cache",
@@ -42,7 +42,7 @@ class FlightsPage extends Simulation {
 		"sec-ch-ua-mobile" -> "?0",
 		"sec-ch-ua-platform" -> "Windows")
 
-	val headers_3 = Map(
+	val fp_headers_3 = Map(
 		"Cache-Control" -> "no-cache",
 		"Pragma" -> "no-cache",
 		"Sec-Fetch-Dest" -> "image",
@@ -57,22 +57,22 @@ class FlightsPage extends Simulation {
 	val scn = scenario("FlightsPage")
 		.exec(http("request_0")
 			.get("/cgi-bin/welcome.pl?page=search")
-			.headers(headers_0)
+			.headers(fp_headers_0)
 			.resources(http("request_1")
 			.get("/cgi-bin/reservations.pl?page=welcome")
-			.headers(headers_1), http("request_2")
+			.headers(fp_headers_1), http("request_2")
 			.get("/cgi-bin/nav.pl?page=menu&in=flights")
-			.headers(headers_1), http("request_3")
+			.headers(fp_headers_1), http("request_3")
 			.get("/WebTours/images/itinerary.gif")
-			.headers(headers_3), http("request_4")
+			.headers(fp_headers_3), http("request_4")
 			.get("/WebTours/images/signoff.gif")
-			.headers(headers_3), http("request_5")
+			.headers(fp_headers_3), http("request_5")
 			.get("/WebTours/images/home.gif")
-			.headers(headers_3), http("request_6")
+			.headers(fp_headers_3), http("request_6")
 			.get("/WebTours/images/button_next.gif")
-			.headers(headers_3), http("request_7")
+			.headers(fp_headers_3), http("request_7")
 			.get("/WebTours/images/in_flights.gif")
-			.headers(headers_3)))
+			.headers(fp_headers_3)))
 
 	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
 }

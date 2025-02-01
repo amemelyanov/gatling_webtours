@@ -16,7 +16,7 @@ class StartPage extends Simulation {
 		.acceptLanguageHeader("ru-RU,ru;q=0.9")
 		.userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36")
 
-	val headers_0 = Map(
+	val sp_headers_0 = Map(
 		"Cache-Control" -> "no-cache",
 		"Pragma" -> "no-cache",
 		"Sec-Fetch-Dest" -> "document",
@@ -28,7 +28,7 @@ class StartPage extends Simulation {
 		"sec-ch-ua-mobile" -> "?0",
 		"sec-ch-ua-platform" -> "Windows")
 
-	val headers_1 = Map(
+	val sp_headers_1 = Map(
 		"Cache-Control" -> "no-cache",
 		"Pragma" -> "no-cache",
 		"Sec-Fetch-Dest" -> "frame",
@@ -39,7 +39,7 @@ class StartPage extends Simulation {
 		"sec-ch-ua-mobile" -> "?0",
 		"sec-ch-ua-platform" -> "Windows")
 
-	val headers_3 = Map(
+	val sp_headers_3 = Map(
 		"Accept" -> "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
 		"Cache-Control" -> "no-cache",
 		"Pragma" -> "no-cache",
@@ -55,22 +55,22 @@ class StartPage extends Simulation {
 	val scn = scenario("StartPage")
 		.exec(http("request_0")
 			.get("/com/gatling/tests/webtours/")
-			.headers(headers_0)
+			.headers(sp_headers_0)
 			.resources(http("request_1")
 			.get("/com/gatling/tests/webtours/header.html")
-			.headers(headers_1), http("request_2")
+			.headers(sp_headers_1), http("request_2")
 			.get("/cgi-bin/welcome.pl?signOff=true")
-			.headers(headers_1), http("request_3")
+			.headers(sp_headers_1), http("request_3")
 			.get("/com/gatling/tests/webtours/images/hp_logo.png")
-			.headers(headers_3), http("request_4")
+			.headers(sp_headers_3), http("request_4")
 			.get("/cgi-bin/nav.pl?in=home")
-			.headers(headers_1), http("request_5")
+			.headers(sp_headers_1), http("request_5")
 			.get("/WebTours/home.html")
-			.headers(headers_1), http("request_6")
+			.headers(sp_headers_1), http("request_6")
 			.get("/WebTours/images/mer_login.gif")
-			.headers(headers_3), http("request_7")
+			.headers(sp_headers_3), http("request_7")
 			.get("/com/gatling/tests/webtours/images/webtours.png")
-			.headers(headers_3)))
+			.headers(sp_headers_3)))
 
 	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
 }

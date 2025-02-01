@@ -20,7 +20,7 @@ class CancelReservation extends Simulation {
 		.upgradeInsecureRequestsHeader("1")
 		.userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36")
 
-	val headers_0 = Map(
+	val cr_headers_0 = Map(
 		"Cache-Control" -> "no-cache",
 		"Pragma" -> "no-cache",
 		"Sec-Fetch-Dest" -> "frame",
@@ -36,7 +36,7 @@ class CancelReservation extends Simulation {
 	val scn = scenario("CancelReservation")
 		.exec(http("request_0")
 			.post("/cgi-bin/itinerary.pl")
-			.headers(headers_0)
+			.headers(cr_headers_0)
 			.formParam("flightID", "41148532-84674-JB")
 			.formParam("removeAllFlights.x", "36")
 			.formParam("removeAllFlights.y", "6")

@@ -20,7 +20,7 @@ class FindFlights extends Simulation {
 		.upgradeInsecureRequestsHeader("1")
 		.userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36")
 
-	val headers_0 = Map(
+	val ff_headers_0 = Map(
 		"Cache-Control" -> "no-cache",
 		"Pragma" -> "no-cache",
 		"Sec-Fetch-Dest" -> "frame",
@@ -36,7 +36,7 @@ class FindFlights extends Simulation {
 	val scn = scenario("FindFlights")
 		.exec(http("request_0")
 			.post("/cgi-bin/reservations.pl")
-			.headers(headers_0)
+			.headers(ff_headers_0)
 			.formParam("advanceDiscount", "0")
 			.formParam("depart", "Denver")
 			.formParam("departDate", "02/02/2025")
