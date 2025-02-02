@@ -39,7 +39,7 @@ class StartPage extends Simulation {
 		"sec-ch-ua-mobile" -> "?0",
 		"sec-ch-ua-platform" -> "Windows")
 
-	val sp_headers_3 = Map(
+	val sp_headers_2 = Map(
 		"Accept" -> "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
 		"Cache-Control" -> "no-cache",
 		"Pragma" -> "no-cache",
@@ -54,23 +54,29 @@ class StartPage extends Simulation {
 
 	val scn = scenario("StartPage")
 		.exec(http("request_0")
-			.get("/com/gatling/tests/webtours/")
+			.get("/webtours/")
 			.headers(sp_headers_0)
 			.resources(http("request_1")
-			.get("/com/gatling/tests/webtours/header.html")
-			.headers(sp_headers_1), http("request_2")
-			.get("/cgi-bin/welcome.pl?signOff=true")
-			.headers(sp_headers_1), http("request_3")
-			.get("/com/gatling/tests/webtours/images/hp_logo.png")
-			.headers(sp_headers_3), http("request_4")
-			.get("/cgi-bin/nav.pl?in=home")
-			.headers(sp_headers_1), http("request_5")
-			.get("/WebTours/home.html")
-			.headers(sp_headers_1), http("request_6")
-			.get("/WebTours/images/mer_login.gif")
-			.headers(sp_headers_3), http("request_7")
-			.get("/com/gatling/tests/webtours/images/webtours.png")
-			.headers(sp_headers_3)))
+				.get("/webtours/header.html")
+				.headers(sp_headers_1),
+				http("request_2")
+					.get("/webtours/images/hp_logo.png")
+					.headers(sp_headers_2),
+				http("request_3")
+					.get("/webtours/images/webtours.png")
+					.headers(sp_headers_2),
+				http("request_4")
+					.get("/cgi-bin/welcome.pl?signOff=true")
+					.headers(sp_headers_1),
+				http("request_5")
+					.get("/WebTours/home.html")
+					.headers(sp_headers_1),
+				http("request_6")
+					.get("/cgi-bin/nav.pl?in=home")
+					.headers(sp_headers_1),
+				http("request_7")
+					.get("/WebTours/images/mer_login.gif")
+					.headers(sp_headers_2)))
 
 	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
 }
